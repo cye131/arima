@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6951c677ba043d336dfe1bc0b5e6f70",
+    "content-hash": "04c06fa5cdb66c0742e9dc96e1cf6f97",
     "packages": [
         {
             "name": "php-ai/php-ml",
@@ -59,6 +59,50 @@
                 "pattern recognition"
             ],
             "time": "2018-02-22T16:06:31+00:00"
+        },
+        {
+            "name": "php-timeseries/php-timeseries",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cye131/php-timeseries.git",
+                "reference": "7a37f4e4fd1ee5fcb71d8be5b84f8ded6d27801f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cye131/php-timeseries/zipball/7a37f4e4fd1ee5fcb71d8be5b84f8ded6d27801f",
+                "reference": "7a37f4e4fd1ee5fcb71d8be5b84f8ded6d27801f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPTimeSeries\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Charles Ye",
+                    "email": "cye@outlook.com"
+                }
+            ],
+            "description": "Various time series analysis tools for PHP.",
+            "keywords": [
+                "Econometrics",
+                "Time Series Analysis",
+                "time series"
+            ],
+            "time": "2018-06-26T16:49:23+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

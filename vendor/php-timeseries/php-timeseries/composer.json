@@ -1,0 +1,24 @@
+{
+    "name": "php-timeseries/php-timeseries",
+    "description": "Various time series analysis tools for PHP.",
+    "keywords": ["Time Series", "Time Series Analysis", "Econometrics"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Charles Ye",
+            "email": "cye@outlook.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=7.1"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPTimeSeries\\": "src"
+        }
+    }
+}

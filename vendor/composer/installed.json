@@ -56,6 +56,52 @@
         ]
     },
     {
+        "name": "php-timeseries/php-timeseries",
+        "version": "v1.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cye131/php-timeseries.git",
+            "reference": "7a37f4e4fd1ee5fcb71d8be5b84f8ded6d27801f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cye131/php-timeseries/zipball/7a37f4e4fd1ee5fcb71d8be5b84f8ded6d27801f",
+            "reference": "7a37f4e4fd1ee5fcb71d8be5b84f8ded6d27801f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "6.*"
+        },
+        "time": "2018-06-26T16:49:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PHPTimeSeries\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Charles Ye",
+                "email": "cye@outlook.com"
+            }
+        ],
+        "description": "Various time series analysis tools for PHP.",
+        "keywords": [
+            "Econometrics",
+            "Time Series Analysis",
+            "time series"
+        ]
+    },
+    {
         "name": "symfony/polyfill-mbstring",
         "version": "v1.8.0",
         "version_normalized": "1.8.0.0",

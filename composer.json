@@ -2,6 +2,7 @@
     "require": {
         "twig/twig": "^2.0",
         "symfony/polyfill-mbstring": "^1.8",
-        "php-ai/php-ml": "^0.6.2"
+        "php-ai/php-ml": "^0.6.2",
+        "php-timeseries/php-timeseries": "^1.0"
     }
 }

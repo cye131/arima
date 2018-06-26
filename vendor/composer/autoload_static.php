@@ -22,6 +22,7 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         'P' => 
         array (
             'Phpml\\' => 6,
+            'PHPTimeSeries\\' => 14,
         ),
     );
 
@@ -37,6 +38,10 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         'Phpml\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
+        ),
+        'PHPTimeSeries\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-timeseries/php-timeseries/src',
         ),
     );
 

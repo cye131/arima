@@ -45,15 +45,18 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
 <script src=\"//code.highcharts.com/stock/indicators/ema.js\"></script>
 <script src=\"//code.highcharts.com/stock/indicators/bollinger-bands.js\"></script>
 
+<script src=\"//evanplaice.github.io/jquery-csv/src/jquery.csv.js\"></script>
+
+
 <script src=\"scripts/adddata.js\"></script>
 
 ";
     }
 
-    // line 20
+    // line 23
     public function block_content($context, array $blocks = array())
     {
-        // line 21
+        // line 24
         echo "
     <section class=\"container-fluid\">
         <div class=\"card\" style=\"\">
@@ -68,65 +71,72 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
     </section>
     
     <section class=\"container-fluid py-5\">
-    <div class=\"row justify-content-md-center my-5\">
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #1</h5>
+    <div class=\"row justify-content-md-center my-5\" id=\"card-holder\">
+        
+        <div class=\"card border-danger mx-2 my-2\" style=\"width: 26rem;\">
+        <div class=\"card-body\">
+            <h5 class=\"card-title\"></h5>
             <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
             <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
+            
+            <div class=\"bs-callout bs-callout-primary\">
+                <h4>Online Data Sources</h4>
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn \">Get Historical Data for any Stock or ETF</button>
+                <form class=\"form addtypestk py-3\" style=\"display:none\">
+                    <div class = \"form-group\">
+                        <label>Date Range:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date1\" value=\"\" placeholder=\"YYYY-MM-DD\" > to 
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date2\" value=\"\" placeholder=\"YYYY-MM-DD\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Stock Ticker:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-ticker\" value=\"\" placeholder=\"e.g., AAPL\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Frequency</label>
+                        <div class=\"btn-group btn-group-toggle\" data-toggle=\"buttons\">
+                          <label class=\"btn btn-secondary btn-sm active\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"d\" autocomplete=\"off\" checked>  Daily
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"w\" autocomplete=\"off\"> Weekly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"m\" autocomplete=\"off\"> Monthly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"q\" autocomplete=\"off\"> Quarterly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"a\" autocomplete=\"off\"> Annually
+                          </label>
+                        </div>
+                    </div>
+                    
+                    
+                    <button class=\"btn btn-outline-primary btn-block stk-submit\" type=\"button\">Submit</button>
+                    <div id=\"errormessage\" class=\"invalid-feedback\">Error Message!</div>
+                </form>
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
+                <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class=\"highlighter-rouge\">&lt;div&gt;</code> with the class.</p>
+
+            </div>
+            
+
+        <a href=\"\" class=\"card-link\">Card link</a>
+        <a href=\"\" class=\"card-link\">Another link</a>
+        </div>
         </div>
         
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #2</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
-        
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #3</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
-        
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #4</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
-        
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #5</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
     </div>
     </section>
 
 
 
     ";
-        // line 90
-        $this->loadTemplate("dataloader.html", "adddata.html", 90)->display($context);
-        // line 91
+        // line 100
+        $this->loadTemplate("dataloader.html", "adddata.html", 100)->display($context);
+        // line 101
         echo "    
     <div class=\"overlay\" hidden=\"hidden\"></div>
     <section class=\"container-fluid\" id=\"spinnercontainer\" style=\"\" hidden=\"hidden\">
@@ -268,7 +278,7 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
 
     public function getDebugInfo()
     {
-        return array (  130 => 91,  128 => 90,  57 => 21,  54 => 20,  36 => 4,  33 => 3,  15 => 1,);
+        return array (  140 => 101,  138 => 100,  60 => 24,  57 => 23,  36 => 4,  33 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -287,6 +297,9 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
 <script src=\"//code.highcharts.com/stock/indicators/indicators.js\"></script>
 <script src=\"//code.highcharts.com/stock/indicators/ema.js\"></script>
 <script src=\"//code.highcharts.com/stock/indicators/bollinger-bands.js\"></script>
+
+<script src=\"//evanplaice.github.io/jquery-csv/src/jquery.csv.js\"></script>
+
 
 <script src=\"scripts/adddata.js\"></script>
 
@@ -307,56 +320,63 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
     </section>
     
     <section class=\"container-fluid py-5\">
-    <div class=\"row justify-content-md-center my-5\">
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #1</h5>
+    <div class=\"row justify-content-md-center my-5\" id=\"card-holder\">
+        
+        <div class=\"card border-danger mx-2 my-2\" style=\"width: 26rem;\">
+        <div class=\"card-body\">
+            <h5 class=\"card-title\"></h5>
             <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
             <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
+            
+            <div class=\"bs-callout bs-callout-primary\">
+                <h4>Online Data Sources</h4>
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn \">Get Historical Data for any Stock or ETF</button>
+                <form class=\"form addtypestk py-3\" style=\"display:none\">
+                    <div class = \"form-group\">
+                        <label>Date Range:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date1\" value=\"\" placeholder=\"YYYY-MM-DD\" > to 
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date2\" value=\"\" placeholder=\"YYYY-MM-DD\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Stock Ticker:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-ticker\" value=\"\" placeholder=\"e.g., AAPL\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Frequency</label>
+                        <div class=\"btn-group btn-group-toggle\" data-toggle=\"buttons\">
+                          <label class=\"btn btn-secondary btn-sm active\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"d\" autocomplete=\"off\" checked>  Daily
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"w\" autocomplete=\"off\"> Weekly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"m\" autocomplete=\"off\"> Monthly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"q\" autocomplete=\"off\"> Quarterly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"a\" autocomplete=\"off\"> Annually
+                          </label>
+                        </div>
+                    </div>
+                    
+                    
+                    <button class=\"btn btn-outline-primary btn-block stk-submit\" type=\"button\">Submit</button>
+                    <div id=\"errormessage\" class=\"invalid-feedback\">Error Message!</div>
+                </form>
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
+                <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class=\"highlighter-rouge\">&lt;div&gt;</code> with the class.</p>
+
+            </div>
+            
+
+        <a href=\"\" class=\"card-link\">Card link</a>
+        <a href=\"\" class=\"card-link\">Another link</a>
+        </div>
         </div>
         
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #2</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
-        
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #3</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
-        
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #4</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
-        
-        <div class=\"card border-danger mx-2 my-2\" style=\"width: 18rem;\">
-          <div class=\"card-body\">
-            <h5 class=\"card-title\">Time Series #5</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href=\"#\" class=\"card-link\">Card link</a>
-            <a href=\"#\" class=\"card-link\">Another link</a>
-          </div>
-        </div>
     </div>
     </section>
 
