@@ -19,6 +19,10 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
+        'P' => 
+        array (
+            'Phpml\\' => 6,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -29,6 +33,10 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Phpml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
         ),
     );
 
