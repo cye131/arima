@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-  max-width:1200px !important;
+  max-width:1280px !important;
 }
 
 header {
@@ -40,27 +40,19 @@ nav.navbar {
 }
 
 
-li.nav-item{
+nav.navbar li.nav-item{
     padding-top:2px;
 }
 
-
-
-li.nav-item.active {
+nav.navbar li.nav-item.active {
     border-bottom:3px solid rgb(162, 177, 219);
     font-weight:600;
 }
 
-/*a.nav-link {
-    color:black !important;
-}*/
-
-.form-inline .form-group label,
-.form-inline .form-group input,
-.form-inline .form-group select {
-    margin: 0 3px;
+div.input-group {
+  margin-top: 1rem;
+  margin-bottom:1rem;
 }
-
 
 
 div.tab-content {
@@ -187,44 +179,35 @@ footer {
 }
 
 /* Sidebar navigation */
-.sidebar {
+nav.sidebar {
   padding-left: 0;
   padding-right: 0;
 }
 
-.sidebar .nav {
-  margin-bottom: 20px;
-}
-
-.sidebar .nav-item {
+nav.sidebar .nav-item {
   width: 100%;
 }
 
-.sidebar .nav-item + .nav-item {
-  margin-left: 0;
+nav.sidebar > ul > li > a {
+  padding: 8px 6px;
+  color: black;
 }
 
-.sidebar .nav-link {
-  border-radius: 0;
-}
 
 nav.sidebar > ul > li > a.nav-link.active {
   background-color:rgba(10, 24, 66,1) !important;
   color: white !important;
 }
 
-nav.sidebar > ul > li:hover {
+nav.sidebar > ul > li > a:hover {
   background-color:rgb(48, 58, 86) !important;
-}
-
-nav.sidebar > ul > li:hover > a {
   color:white !important;
 }
 
-nav.sidebar > ul > li > a {
-  color: black;
+nav.sidebar > ul > li > ul {
+  font-size: .95rem;
+  margin-bottom: 5px;
 }
-
 
 main {
   top:90px;
@@ -233,19 +216,21 @@ main {
 
 /** Loading Spinner **/
 .overlay {
-    background: black;
+    background: #D3D3D3;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.3;
+    opacity: 0.7;
     z-index: 98;
 }
 
 #loadmessage {
   z-index: 99;
   color: black;
+  font-weight:700;
+  margin-top:50px;
 }
 
 .sk-circle {
@@ -268,7 +253,7 @@ main {
   margin: 0 auto;
   width: 15%;
   height: 15%;
-  background-color: #333;
+  background-color: black;
   border-radius: 100%;
   -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
           animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
@@ -452,21 +437,9 @@ main {
 }
 
 /** Datatables **/
-table.dataTable td.upperrow {
-    border:none !important;
-}
-
-td.upperrow span {
-    display: block;
-    margin: 0 auto;
-    border-bottom: 1px solid black;
-    width: 80%;
-    color:rgba(50, 50, 190,1);
-    font-weight: 500;
-}
-
 table.dataTable th {
-    background-color: rgba(225, 233, 240,.6)
+    background-color: rgba(225, 233, 240,.6);
+    text-align:center;
 }
 
 table.dataTable td {

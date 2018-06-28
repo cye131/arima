@@ -1,8 +1,24 @@
 $(document).ready(function() {
-
-    getUserData();
-    addTable();
+  
+  /* Init
+   *
+   *
+   *
+   */
+  
+    addCards();
     
+    (function () {
+      var uniqid = getCookieValue('uniqid');
+      if (uniqid == null) return;
+      var ajaxGetUserData = getUserData(uniqid);
+      ajaxGetUserData.done(function(res) {
+        userData = JSON.parse(res).userData;
+        updateCards(userData);
+        updateSidebar(userData);
+      });
+    })();
+
     
     /*  Input Elements
      *
@@ -11,18 +27,8 @@ $(document).ready(function() {
      */
     
     $( ".addbtn" ).click(function() {
-        /*
-        var objClasses = $(this).attr('class');
-        var placeIndex = objClasses.indexOf('addindex');
-
-        if (placeIndex < 0) return;
-        
-        var i = objClasses.substring(placeIndex+8,placeIndex+9);
-        */
-        
-        var form = $(this).next('form');
-        form.toggle();
-        
+        var modal = $(this).next('div.modal');
+        modal.modal('show');
     });
     
     
@@ -80,111 +86,68 @@ $(document).ready(function() {
         
         console.log(stkFreq.val());
 
-        
-        
-        
         $('.stock-input').addClass('is-valid');
+        
+        var objClasses = form.attr('class');
+        var placeIndex = objClasses.indexOf('cardIndex');
+
+        if (placeIndex < 0) return;
+        
+        var cardIndex = objClasses.substring(placeIndex+9,placeIndex+10);
+        var uniqid = getCookieValue('uniqid');
+        
+        if (uniqid.length < 1) return;
+        console.log('Getting AJAX');
+        form.prev('div.overlay').show();
+        
+        var ajaxGetStkData = getStkData(uniqid,cardIndex,stkTickerVal,stkFreqVal,stkDate1Val,stkDate2Val);
+        ajaxGetStkData.done(function(res) {
+          form
+            .closest('div.modal').modal('hide')
+            .find('div.overlay').show();
+          console.log(res);
+          userData = JSON.parse(res).userData;
+          updateCards(userData);
+          updateSidebar(userData);
+        });
+
+    });
+    
+    
+    $('button.card-delete').click(function() {
+        var cardID = $(this).closest('div.card').attr('id');
+        var placeIndex = cardID.indexOf('card');
+        if (placeIndex < 0) return;
+        var cardIndex = cardID.substring(placeIndex+4,placeIndex+5);
+
+        console.log(cardIndex);
+        var uniqid = getCookieValue('uniqid');
+
+        var ajaxDeleteUserData = deleteUserData(uniqid,cardIndex);
+        ajaxDeleteUserData.done(function(res) {
+          res = JSON.parse(res);
+          if (res.deletedBytes == null || res.deletedBytes < 1) return;
+          updateCards(res.userData);
+          updateSidebar(res.userData);
+        });
+
+        
         
     });
 
-    
-    function validateFail(obj,objStr,str){
-        obj.addClass('is-invalid');
-        objStr
-            .show()
-            .text(str);
-    }
 
     
     
     
-    
-    
-    
-    /* AJAX Calls
+    /* Functions requiring document.ready
      *
      *
      *
      */
-    function getUserData() {
-        var uniqid = getCookieValue('uniqid');
+    
+    
+    
 
-        $.ajax({
-            url: 'routerAjax.php',
-            type: 'POST',
-            data: {
-                logic: ['get_json_storage'],
-                toScript: ['userData'],
-                fromAjax: {'uniqid': uniqid}
-                },
-            dataType: 'html',
-            cache: false,
-            timeout: 10000,
-            success: function(res){
-                console.log(res);
-                if (isJson(res)) {
-                } else {
-                }
-            },
-            error:function(){
-                validateFail('Historical data not found.');
-            }
-        });
-    }
-
-    
-    
-    function addTable() {
-        var cardTemplate = $('#card-holder > div.card');
-        for (i=1;i<=5;i++) {
-            var newCard = cardTemplate.clone();
-            newCard
-                .find('form').addClass('cardIndex' + i)
-                .find('input.stk-date2').val( (new Date()).toISOString().split('T')[0] )
-                .end().end() //resets chain
-                .find('h5.card-title').text('Time Series Data #' + i)
-                .end()
-                .appendTo('#card-holder');
-            
-        }
-        $('#card-holder > div.card').first().hide();
-        
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     
 });
-
-
-
-
-function getCookieValue(a) {
-    var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-    return b ? b.pop() : '';
-}
-
-function isValidDate(dateString) {
-  var regEx = /^\d{4}-\d{2}-\d{2}$/;
-  if(!dateString.match(regEx)) return false;  // Invalid format
-  var d = new Date(dateString);
-  if(!d.getTime() && d.getTime() !== 0) return false; // Invalid date
-  return d.toISOString().slice(0,10) === dateString;
-}
-
-

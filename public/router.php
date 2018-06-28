@@ -35,9 +35,17 @@ $requestvars = [];
 if ($request === 'intro') {
   $title = 'Intro';
 }
-
+elseif ($request === 'graphs') {
+ $title = 'Graphs';
+}
 elseif ($request === 'boxjenkins') {
   $title = 'Box-Jenkins Analyzer';
+}
+
+elseif ($request === 'about') {
+ $title = 'About';
+ $logic[] = 'get_readme';
+ $toScript = ['readme'];
 }
 
 
@@ -106,13 +114,13 @@ foreach ($fromRouter as $k => $fR) {
 if (count($model) > 0) {
   $sql = new MyPDO();
   foreach ($model as $m) {
-    require_once("/var/www/correlation/models/$m.model.php");
+    require_once("/var/www/arima/models/$m.model.php");
     }
 }
 
 if (count($logic) > 0) {
   foreach ($logic as $l) {
-    require_once("/var/www/correlation/models/$l.logic.php");
+    require_once("/var/www/arima/models/$l.logic.php");
   }
 }
 

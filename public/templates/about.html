@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<a href="https://github.com/cye131/arima" target="_blank">https://github.com/cye131/arima</a>
+<script>
+$(document).ready(function() {
+    var readmeFmt = readme.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    $('main a').after(readmeFmt);
+    
+});
+
+</script>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 <?php
 
-/* adddata.html */
-class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09f879d extends Twig_Template
+/* graphs.html */
+class __TwigTemplate_88367d3f56f30dc647e0f8d3ef765382292b05837ee083df3c631c19e16edd4c extends Twig_Template
 {
     private $source;
 
@@ -12,7 +12,7 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
         $this->source = $this->getSourceContext();
 
         // line 1
-        $this->parent = $this->loadTemplate("layout.html", "adddata.html", 1);
+        $this->parent = $this->loadTemplate("layout.html", "graphs.html", 1);
         $this->blocks = array(
             'staticlinks' => array($this, 'block_staticlinks'),
             'content' => array($this, 'block_content'),
@@ -29,38 +29,52 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
+    // line 2
     public function block_staticlinks($context, array $blocks = array())
     {
-        // line 4
-        echo "<script src=\"scripts/adddata-fns.js\"></script>
-<script src=\"scripts/adddata.js\"></script>
+        // line 3
+        echo "<script src=\"scripts/graphs.js\"></script>
 ";
     }
 
-    // line 8
+    // line 7
     public function block_content($context, array $blocks = array())
     {
-        // line 9
+        // line 8
         echo "
+    ";
+        // line 9
+        $this->loadTemplate("_transform_.html", "graphs.html", 9)->display($context);
+        // line 10
+        echo "    <section class=\"container-fluid\">
+    <div class=\"bs-callout bs-callout-primary\">
+        <h5 class=\"text-primary\">Graph Options</h5>
+        <h6>Graph:</h6>
+        <div id=\"checkbox-div\"></div>
+
+        <div class=\"input-group mb-3\">
+          <div class=\"input-group-prepend\">
+            <button class=\"btn btn-secondary disabled\" type=\"button\">Choose data transformation: </button>
+          </div>
+          <select class=\"custom-select\">
+            <option value=\"val\">Base Value (No Transformation)</option>
+            <option value=\"pchg\" selected=\"selected\">% Change</option>
+          </select>
+        </div>
+        
+    </div>
+    </section>
+
     <section class=\"container-fluid\">
-        <div class=\"card\" style=\"\">
-            <div class=\"card-body\">
-                <h5 class=\"card-title\">Add Datasets</h5>
-                <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-                <p class=\"card-text\">You can add up to 5 datasets. They will be stored for 30 days after your last visit to the site, or whenever you clear your browser cookies.</p>
-                <a href=\"#\" class=\"card-link\">Card link</a>
-                <a href=\"#\" class=\"card-link\">Another link</a>
-            </div>
+        <div class=\"row justify-content-md-center my-5\">
+            <div class=\"col-md-12\" id=\"tsChart\"></div>
         </div>
     </section>
     
-    
-
-    <section class=\"container-fluid py-3\">
+    <section class=\"container-fluid py-5\">
     <div class=\"row justify-content-md-center my-5\" id=\"card-holder\">
         
-        <div class=\"card border-warning mx-2 my-2\" style=\"width: 32rem;\">
+        <div class=\"card border-warning mx-2 my-2\" style=\"width: 30rem;\">
         <div class=\"card-header\">
             <button type=\"button\" class=\"btn btn-outline-danger float-right card-delete\" style=\"display:none\">Delete Series</button>
             <h5 class=\"card-title text-warning\">Loading...</h5>
@@ -84,12 +98,43 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
             
             <div class=\"bs-callout bs-callout-primary\" style=\"display:none\">
                 <h4>Online Data Sources</h4>
-                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn\"><span class=\"badge badge-light\">1</span> Get historical data for any stock or ETF</button>
-                ";
-        // line 52
-        $this->loadTemplate("__modalstk__.html", "adddata.html", 52)->display($context);
-        // line 53
-        echo "                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn \">Get historical data for any stock or ETF</button>
+                <form class=\"form addtypestk py-3\" style=\"display:none\">
+                    <div class = \"form-group\">
+                        <label>Date Range:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date1\" value=\"\" placeholder=\"YYYY-MM-DD\" > to 
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date2\" value=\"\" placeholder=\"YYYY-MM-DD\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Stock Ticker:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-ticker\" value=\"\" placeholder=\"e.g., AAPL\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Frequency:</label>
+                        <div class=\"btn-group btn-group-toggle\" data-toggle=\"buttons\">
+                          <label class=\"btn btn-secondary btn-sm active\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"d\" autocomplete=\"off\" checked>  Daily
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"w\" autocomplete=\"off\"> Weekly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"m\" autocomplete=\"off\"> Monthly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"q\" autocomplete=\"off\"> Quarterly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"a\" autocomplete=\"off\"> Annually
+                          </label>
+                        </div>
+                    </div>
+                    
+                    
+                    <button class=\"btn btn-outline-primary btn-block stk-submit\" type=\"button\">Submit</button>
+                    <div id=\"errormessage\" class=\"invalid-feedback\">Error Message!</div>
+                </form>
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
                 <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class=\"highlighter-rouge\">&lt;div&gt;</code> with the class.</p>
 
             </div>
@@ -236,7 +281,7 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
 
     public function getTemplateName()
     {
-        return "adddata.html";
+        return "graphs.html";
     }
 
     public function isTraitable()
@@ -246,38 +291,49 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
 
     public function getDebugInfo()
     {
-        return array (  92 => 53,  90 => 52,  45 => 9,  42 => 8,  36 => 4,  33 => 3,  15 => 1,);
+        return array (  49 => 10,  47 => 9,  44 => 8,  41 => 7,  36 => 3,  33 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends \"layout.html\" %}
-
 {% block staticlinks %}
-<script src=\"scripts/adddata-fns.js\"></script>
-<script src=\"scripts/adddata.js\"></script>
+<script src=\"scripts/graphs.js\"></script>
 {% endblock %}
+
 
 {% block content %}
 
+    {% include '_transform_.html' %}
     <section class=\"container-fluid\">
-        <div class=\"card\" style=\"\">
-            <div class=\"card-body\">
-                <h5 class=\"card-title\">Add Datasets</h5>
-                <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>
-                <p class=\"card-text\">You can add up to 5 datasets. They will be stored for 30 days after your last visit to the site, or whenever you clear your browser cookies.</p>
-                <a href=\"#\" class=\"card-link\">Card link</a>
-                <a href=\"#\" class=\"card-link\">Another link</a>
-            </div>
+    <div class=\"bs-callout bs-callout-primary\">
+        <h5 class=\"text-primary\">Graph Options</h5>
+        <h6>Graph:</h6>
+        <div id=\"checkbox-div\"></div>
+
+        <div class=\"input-group mb-3\">
+          <div class=\"input-group-prepend\">
+            <button class=\"btn btn-secondary disabled\" type=\"button\">Choose data transformation: </button>
+          </div>
+          <select class=\"custom-select\">
+            <option value=\"val\">Base Value (No Transformation)</option>
+            <option value=\"pchg\" selected=\"selected\">% Change</option>
+          </select>
+        </div>
+        
+    </div>
+    </section>
+
+    <section class=\"container-fluid\">
+        <div class=\"row justify-content-md-center my-5\">
+            <div class=\"col-md-12\" id=\"tsChart\"></div>
         </div>
     </section>
     
-    
-
-    <section class=\"container-fluid py-3\">
+    <section class=\"container-fluid py-5\">
     <div class=\"row justify-content-md-center my-5\" id=\"card-holder\">
         
-        <div class=\"card border-warning mx-2 my-2\" style=\"width: 32rem;\">
+        <div class=\"card border-warning mx-2 my-2\" style=\"width: 30rem;\">
         <div class=\"card-header\">
             <button type=\"button\" class=\"btn btn-outline-danger float-right card-delete\" style=\"display:none\">Delete Series</button>
             <h5 class=\"card-title text-warning\">Loading...</h5>
@@ -301,8 +357,42 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
             
             <div class=\"bs-callout bs-callout-primary\" style=\"display:none\">
                 <h4>Online Data Sources</h4>
-                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn\"><span class=\"badge badge-light\">1</span> Get historical data for any stock or ETF</button>
-                {% include '__modalstk__.html' %}
+                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn \">Get historical data for any stock or ETF</button>
+                <form class=\"form addtypestk py-3\" style=\"display:none\">
+                    <div class = \"form-group\">
+                        <label>Date Range:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date1\" value=\"\" placeholder=\"YYYY-MM-DD\" > to 
+                        <input type=\"text\" class=\"form-control form-control-sm stk-date2\" value=\"\" placeholder=\"YYYY-MM-DD\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Stock Ticker:</label>
+                        <input type=\"text\" class=\"form-control form-control-sm stk-ticker\" value=\"\" placeholder=\"e.g., AAPL\" >
+                    </div>
+                    <div class = \"form-group\">
+                        <label>Frequency:</label>
+                        <div class=\"btn-group btn-group-toggle\" data-toggle=\"buttons\">
+                          <label class=\"btn btn-secondary btn-sm active\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"d\" autocomplete=\"off\" checked>  Daily
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"w\" autocomplete=\"off\"> Weekly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"m\" autocomplete=\"off\"> Monthly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"q\" autocomplete=\"off\"> Quarterly
+                          </label>
+                          <label class=\"btn btn-secondary btn-sm\">
+                            <input type=\"radio\" name=\"stk-freq\" value=\"a\" autocomplete=\"off\"> Annually
+                          </label>
+                        </div>
+                    </div>
+                    
+                    
+                    <button class=\"btn btn-outline-primary btn-block stk-submit\" type=\"button\">Submit</button>
+                    <div id=\"errormessage\" class=\"invalid-feedback\">Error Message!</div>
+                </form>
                 <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
                 <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class=\"highlighter-rouge\">&lt;div&gt;</code> with the class.</p>
 
@@ -445,6 +535,6 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
     </section>
 
     
-    {% endblock %}", "adddata.html", "/var/www/arima/public/templates/adddata.html");
+    {% endblock %}", "graphs.html", "/var/www/arima/public/templates/graphs.html");
     }
 }

@@ -11,13 +11,11 @@ $uniqid = preg_replace("/[^[:alnum:][:space:]]/u", '', $uniqid); //Sanitize
 if ( !file_exists ("/var/www/arima/json_storage/$uniqid.json") ) {
     
     $putUserData = [
-                            0 => [],
                             1 => [],
                             2 => [],
                             3 => [],
                             4 => [],
                             5 => [],
-                            6 => []
         ];
     
     $putJsonUserData = json_encode($putUserData);

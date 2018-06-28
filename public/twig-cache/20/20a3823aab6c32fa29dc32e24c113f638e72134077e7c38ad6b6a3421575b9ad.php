@@ -45,21 +45,23 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
     <script src=\"//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
     <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
     
+    <script src=\"//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js\"></script>
+    <script src=\"//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js\"></script>
+    <script src=\"//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js\"></script>
+    <script src=\"//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js\"></script>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css\"/>
+    
+    <script src=\"//code.highcharts.com/stock/highstock.js\"></script>
+
+    <script src=\"scripts/main-fns.js\"></script>
     <script src=\"scripts/main.js\"></script>
     ";
-        // line 22
+        // line 31
         $this->displayBlock('staticlinks', $context, $blocks);
-        // line 23
+        // line 32
         echo "
 
     
-    <script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: \"ca-pub-9558447444041339\",
-        enable_page_level_ads: true
-      });
-    </script>
 </head>
 <body>
     <header class=\"clearfix\">
@@ -77,7 +79,7 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
                             <a class=\"nav-link\" href=\"/\">Home</a>
                         </li>
                         <li class=\"nav-item\">
-                            <a class=\"nav-link\" href=\"/boxjenkins\">Box-Jenkins</a>
+                            <a class=\"nav-link\" href=\"/about\">About</a>
                         </li>
                     </ul>
                 </div>
@@ -91,10 +93,17 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
       <nav class=\"col-sm-4 col-md-3 col-xl-2 d-none d-sm-block bg-light sidebar px-0\">
           <ul class=\"nav flex-column\">
             <li class=\"nav-item\">
-              <a class=\"nav-link active\" href=\"/adddata\">Datasets</a>
+              <a class=\"nav-link font-weight-bold\" href=\"/adddata\">DATASETS</a>
+              <ul id=\"ser-list\">
+                <li id=\"ser1\">Dataset 1 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser2\">Dataset 2 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser3\">Dataset 3 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser4\">Dataset 4 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser5\">Dataset 5 <span class=\"badge badge-warning\">Loading...</span></li>
+              </ul>
             </li>
             <li class=\"nav-item\">
-              <a class=\"nav-link\" href=\"#\">Reports</a>
+              <a class=\"nav-link\" href=\"/graphs\">Graphs</a>
             </li>
             <li class=\"nav-item\">
               <a class=\"nav-link\" href=\"#\">Analytics</a>
@@ -134,9 +143,9 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
       
       <main class=\"col-sm-8 col-md-9 col-xl-10 ml-sm-auto pt-3 px-4\" id=\"main\">
       ";
-        // line 106
+        // line 115
         $this->displayBlock('content', $context, $blocks);
-        // line 108
+        // line 117
         echo "          <footer class=\"page-footer font-small pt-4\" style=\"background: rgba(10, 24, 66,1);\">
           
             <div class=\"container text-center text-md-left\">
@@ -191,7 +200,7 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
 
 <script>
   ";
-        // line 161
+        // line 170
         echo ($context["script"] ?? null);
         echo "
 </script>
@@ -201,15 +210,15 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
 </html>";
     }
 
-    // line 22
+    // line 31
     public function block_staticlinks($context, array $blocks = array())
     {
     }
 
-    // line 106
+    // line 115
     public function block_content($context, array $blocks = array())
     {
-        // line 107
+        // line 116
         echo "      ";
     }
 
@@ -225,7 +234,7 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
 
     public function getDebugInfo()
     {
-        return array (  213 => 107,  210 => 106,  205 => 22,  195 => 161,  140 => 108,  138 => 106,  53 => 23,  51 => 22,  34 => 8,  25 => 1,);
+        return array (  222 => 116,  219 => 115,  214 => 31,  204 => 170,  149 => 117,  147 => 115,  62 => 32,  60 => 31,  34 => 8,  25 => 1,);
     }
 
     public function getSourceContext()
@@ -250,18 +259,20 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
     <script src=\"//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>
     <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>
     
+    <script src=\"//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js\"></script>
+    <script src=\"//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js\"></script>
+    <script src=\"//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js\"></script>
+    <script src=\"//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js\"></script>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css\"/>
+    
+    <script src=\"//code.highcharts.com/stock/highstock.js\"></script>
+
+    <script src=\"scripts/main-fns.js\"></script>
     <script src=\"scripts/main.js\"></script>
     {% block staticlinks %}{% endblock %}
 
 
     
-    <script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: \"ca-pub-9558447444041339\",
-        enable_page_level_ads: true
-      });
-    </script>
 </head>
 <body>
     <header class=\"clearfix\">
@@ -279,7 +290,7 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
                             <a class=\"nav-link\" href=\"/\">Home</a>
                         </li>
                         <li class=\"nav-item\">
-                            <a class=\"nav-link\" href=\"/boxjenkins\">Box-Jenkins</a>
+                            <a class=\"nav-link\" href=\"/about\">About</a>
                         </li>
                     </ul>
                 </div>
@@ -293,10 +304,17 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
       <nav class=\"col-sm-4 col-md-3 col-xl-2 d-none d-sm-block bg-light sidebar px-0\">
           <ul class=\"nav flex-column\">
             <li class=\"nav-item\">
-              <a class=\"nav-link active\" href=\"/adddata\">Datasets</a>
+              <a class=\"nav-link font-weight-bold\" href=\"/adddata\">DATASETS</a>
+              <ul id=\"ser-list\">
+                <li id=\"ser1\">Dataset 1 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser2\">Dataset 2 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser3\">Dataset 3 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser4\">Dataset 4 <span class=\"badge badge-warning\">Loading...</span></li>
+                <li id=\"ser5\">Dataset 5 <span class=\"badge badge-warning\">Loading...</span></li>
+              </ul>
             </li>
             <li class=\"nav-item\">
-              <a class=\"nav-link\" href=\"#\">Reports</a>
+              <a class=\"nav-link\" href=\"/graphs\">Graphs</a>
             </li>
             <li class=\"nav-item\">
               <a class=\"nav-link\" href=\"#\">Analytics</a>
