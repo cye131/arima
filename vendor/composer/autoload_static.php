@@ -24,6 +24,11 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
             'Phpml\\' => 6,
             'PHPTimeSeries\\' => 14,
         ),
+        'M' => 
+        array (
+            'MatthiasMullie\\PathConverter\\' => 29,
+            'MatthiasMullie\\Minify\\' => 22,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -42,6 +47,14 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         'PHPTimeSeries\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-timeseries/php-timeseries/src',
+        ),
+        'MatthiasMullie\\PathConverter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+        ),
+        'MatthiasMullie\\Minify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
     );
 

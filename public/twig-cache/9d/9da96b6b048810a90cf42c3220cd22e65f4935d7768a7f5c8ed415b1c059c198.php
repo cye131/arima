@@ -32,16 +32,12 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
     // line 3
     public function block_staticlinks($context, array $blocks = array())
     {
-        // line 4
-        echo "<script src=\"scripts/adddata-fns.js\"></script>
-<script src=\"scripts/adddata.js\"></script>
-";
     }
 
-    // line 8
+    // line 6
     public function block_content($context, array $blocks = array())
     {
-        // line 9
+        // line 7
         echo "
     <section class=\"container-fluid\">
         <div class=\"card\" style=\"\">
@@ -86,9 +82,9 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
                 <h4>Online Data Sources</h4>
                 <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn\"><span class=\"badge badge-light\">1</span> Get historical data for any stock or ETF</button>
                 ";
-        // line 52
-        $this->loadTemplate("__modalstk__.html", "adddata.html", 52)->display($context);
-        // line 53
+        // line 50
+        $this->loadTemplate("_modalstk_.html", "adddata.html", 50)->display($context);
+        // line 51
         echo "                <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
                 <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class=\"highlighter-rouge\">&lt;div&gt;</code> with the class.</p>
 
@@ -246,7 +242,7 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
 
     public function getDebugInfo()
     {
-        return array (  92 => 53,  90 => 52,  45 => 9,  42 => 8,  36 => 4,  33 => 3,  15 => 1,);
+        return array (  88 => 51,  86 => 50,  41 => 7,  38 => 6,  33 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -254,8 +250,6 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
         return new Twig_Source("{% extends \"layout.html\" %}
 
 {% block staticlinks %}
-<script src=\"scripts/adddata-fns.js\"></script>
-<script src=\"scripts/adddata.js\"></script>
 {% endblock %}
 
 {% block content %}
@@ -302,7 +296,7 @@ class __TwigTemplate_4b1ad307d229d8dd00b805c4de8e5f2d512a10323db1392c31e321d8f09
             <div class=\"bs-callout bs-callout-primary\" style=\"display:none\">
                 <h4>Online Data Sources</h4>
                 <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left addbtn\"><span class=\"badge badge-light\">1</span> Get historical data for any stock or ETF</button>
-                {% include '__modalstk__.html' %}
+                {% include '_modalstk_.html' %}
                 <button type=\"button\" class=\"btn btn-primary btn-md btn-block text-left btn-adddata\">Get Economic Indicator Data</button>
                 <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class=\"highlighter-rouge\">&lt;div&gt;</code> with the class.</p>
 

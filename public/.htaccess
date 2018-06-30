@@ -7,6 +7,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.gif|\.ico|\.jpeg|\.bmp|\.css|\.js|\.json|routerAjax.php)$
 RewriteRule (.*) router.php?path=$1 [NC,QSA]
 
+
 #Redirect non-www to www
 RewriteBase /
 RewriteCond %{HTTP_HOST} !^www\. [NC]

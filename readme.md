@@ -1,6 +1,32 @@
 
 
 ## ChangeLog
+### [v1.2] - 2018-06-29
+- Added an auto-concatenation and minification system for JS files (/js in the root directory compiles to page-specific files in /public/static)
+- Added storage of userData into the #ser-list virtual DOM
+- Added ACF page
+- Added ACF calculation with standard errors in PHP
+- Added ACF graphing calculation and rendering
+- Added Datatables integration
+- Added Datatables exporting to CSV + Microsoft Excel
+- Added Datatables styling to work with Bootstrap 4
+- Added AJAX module templating
+- Added automatic use of an overlay + spinner on AJAX calls
+- Added automatic execution time logging on AJAX calls
+- Added .active auto-selection on sidebar
+- Added MathJAX (LaTeX) integration
+- Added 404 information for Twig Loader Exceptions
+- Added new HTML module graphprepend
+- Improved Datatables sorting arrow CSS
+- Improved virtual DOM storage by using .data attributes
+- Improved favicon
+- Improved Twig-related code in routing
+- Removed recycled HTML code from correl project on Twig templates
+- Removed /public/scripts, JS files now auto-compiled into /public/static
+- Removed link to Datatables' jquery-ui css CDN
+
+
+
 ### [v1.1] - 2018-06-27
 - Added data storage system in JSON
 - Added cURL scraping system for stock and ETF tickers (imported from corr project)

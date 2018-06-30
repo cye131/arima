@@ -1,3 +1,10 @@
+/* To-do: replace cardIndex with a data attribute
+ *
+ *
+ *
+ */
+
+
 $(document).ready(function() {
   
   /* Init

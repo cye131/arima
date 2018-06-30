@@ -11,6 +11,7 @@ Class StaticFile {
         $this->input = $input;
     }
     
+    
     public function minify() {
         if (strtoupper($this->type) === 'HTML') return $this->minified = $this->minify_html($this->input);
         elseif (strtoupper($this->type) === 'JS' || strtoupper($this->type) === 'JAVASCRIPT') return $this->minified = $this->minify_js($this->input);

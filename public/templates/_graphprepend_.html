@@ -1,0 +1,27 @@
+<section class="container-fluid" id="graphprepend">
+<div class="bs-callout bs-callout-primary bg-white">
+    
+    <h5 class="text-primary">Description</h5>
+    <p>
+        {{ graphprepend_p }}
+    </p>
+
+    <h5 class="text-primary">Graph Options</h5>
+    <h6>Graph:</h6>
+    
+    <div id="graph-options">
+        <div id="checkbox-div"></div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-secondary disabled" type="button">Choose data transformation: </button>
+          </div>
+        <select class="custom-select" id="ser-transformation">
+          <option value="val" data-index="2">Base Value (No Transformation)</option>
+          <option value="pchg" data-index="3" selected="selected">% Change</option>
+        </select>
+          
+        </div>
+    </div>
+    
+</div>
+</section>

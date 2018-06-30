@@ -10,4 +10,6 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Phpml\\' => array($vendorDir . '/php-ai/php-ml/src'),
     'PHPTimeSeries\\' => array($vendorDir . '/php-timeseries/php-timeseries/src'),
+    'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
+    'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
 );

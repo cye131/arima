@@ -1,22 +1,20 @@
 $(document).ready(function() {
 
-    
     (function () {
       var uniqid = getCookieValue('uniqid');
-      if (uniqid == null) return;
+      if (uniqid == null) {warnAndRedirect();return;}
       var ajaxGetUserData = getUserData(uniqid);
       ajaxGetUserData.done(function(res) {
         userData = JSON.parse(res).userData;
         updateSidebar(userData);
-        if (checkSeriesCount(userData) === 0) {
-            warnAndRedirect();
-            return;
-        }
+        if (checkValidSeries(userData).length === 0) {warnAndRedirect();return;}
         var tsData = userData2tsData(userData);
-        makeCheckboxes(tsData);
+        console.log(tsData);
+        makeCheckboxes(userData,'check');
         drawTs(tsData);
       });
     })();
+
     
     //Need to use event listener as seriesInput fns are not added to DOM onload
     $('#checkbox-div').on('change', 'input.seriesInput', function() {
@@ -33,7 +31,7 @@ $(document).ready(function() {
     });
     
     
-    $('.custom-select').change(function() {
+    $('#ser-transformation').change(function() {
         var select = $(this).val();
         var chart = $('#tsChart').highcharts();
         
@@ -53,7 +51,8 @@ function userData2tsData(userData) {
         
         tsData[tsCount] = {'data':[],'info':{}};
         tsData[tsCount].info = userData[i].info;
-        
+        tsData[tsCount].info.color = getColorArray()[i];
+
         for (j=0;j<userData[i].data.length;j++) {
             tsData[tsCount].data[j] = [];
             tsData[tsCount].data[j][0] = new Date(userData[i].data[j][0]).getTime();
@@ -62,13 +61,6 @@ function userData2tsData(userData) {
         tsCount++;
     }
     return tsData;
-}
-
-function makeCheckboxes(tsData) {
-    for (i=0;i<tsData.length;i++) {
-        $('#checkbox-div').append('<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input seriesInput" id="seriesInput' + i + '" checked><label class="custom-control-label" for="seriesInput' + i + '"><h5><span class="badge badge-secondary" style="background-color:' + (getColorArray())[i] + ' ">' + tsData[i].info.name + '</span></h5></label></div>');
-    }
-    
 }
 
 function drawTs(tsData) {
@@ -193,7 +185,7 @@ function drawTs(tsData) {
         options.series.push({'data': tsData[i].data,
                                           'name' : tsData[i].info.name,
                                           'visible': true,
-                                          'color': getColorArray()[i],
+                                          'color': tsData[i].info.color,
                                           'compare': 'percent'
                                         });
     }
