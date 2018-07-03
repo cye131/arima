@@ -3,6 +3,8 @@
 ## ChangeLog
 ### [v1.3] 2018-07-02
 - Added R integration
+- Added matrix package
+- Added toeliptz function in PHP
 - Added PACF page
 - Added PACF calculation with standard errors in PHP
 - Added PACF graphing calculation and rendering
