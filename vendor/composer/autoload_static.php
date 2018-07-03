@@ -28,6 +28,7 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         array (
             'MatthiasMullie\\PathConverter\\' => 29,
             'MatthiasMullie\\Minify\\' => 22,
+            'MathPHP\\' => 8,
         ),
     );
 
@@ -55,6 +56,10 @@ class ComposerStaticInitfb9dc2bda7b5b788afe49d1149d4554d
         'MatthiasMullie\\Minify\\' => 
         array (
             0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
+        ),
+        'MathPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markrogoyski/math-php/src',
         ),
     );
 

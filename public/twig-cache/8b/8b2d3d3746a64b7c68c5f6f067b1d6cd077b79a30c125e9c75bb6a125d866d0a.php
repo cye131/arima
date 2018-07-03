@@ -31,8 +31,8 @@ class __TwigTemplate_54278ab94c5117e43ff71366c9ac9b1ca8189265223b4cffa6b109f988d
         echo "
     </p>
 
-    <h5 class=\"text-primary\">Graph Options</h5>
-    <h6>Graph:</h6>
+    <h5 class=\"text-primary\">Graphing Options</h5>
+    <h6>Datasets:</h6>
     
     <div id=\"graph-options\">
         <div id=\"checkbox-div\"></div>
@@ -78,8 +78,8 @@ class __TwigTemplate_54278ab94c5117e43ff71366c9ac9b1ca8189265223b4cffa6b109f988d
         {{ graphprepend_p }}
     </p>
 
-    <h5 class=\"text-primary\">Graph Options</h5>
-    <h6>Graph:</h6>
+    <h5 class=\"text-primary\">Graphing Options</h5>
+    <h6>Datasets:</h6>
     
     <div id=\"graph-options\">
         <div id=\"checkbox-div\"></div>

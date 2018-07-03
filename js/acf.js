@@ -33,6 +33,17 @@ $(document).ready(function() {
         });
     });
 
+    $('#tsChart').on('click', 'button.lag-hl', function() {
+        if ( $(this).hasClass('btn-outline-primary') ) {
+            $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+            $('#tsChart').highcharts().series[2].show();
+        }
+        else if ( $(this).hasClass('btn-primary') ) {
+            $(this).removeClass('btn-primary').addClass('btn-outline-primary');
+            $('#tsChart').highcharts().series[2].hide();
+        }
+    });
+
 
 
 });
@@ -70,12 +81,21 @@ function drawACF(data,name,serIndex) {
 
         var dataACFVal = [];
         var dataACFSE = [];
-        for (i=0;i<data.length;i++) {
-            dataACFVal.push([data[i][0],data[i][1]]);
-            dataACFSE.push([data[i][0],data[i][1]-1.96*data[i][2],data[i][1]+1.96*data[i][2]]);
-        }
-        console.log(dataACFVal);
+        var dataACFSig = [];
+        
+        $.each(data,function(i,row) {
+            dataACFVal.push({x: row[0],y: row[1]});
+            dataACFSE.push({x:row[0],low:row[1]-1.96*row[2],high:row[1]+1.96*row[2]});
+            
+            if (row[1]-1.96*row[2] > 0 || 0 > row[1]+1.96*row[2] ) {
+                dataACFSig.push({x:row[0],y:row[1]});
+            } else {
+                dataACFSig.push({x:row[0],y:null});
+            }
+
+        });
         console.log(dataACFSE);
+        console.log(dataACFSig);
         
         
         var options = {
@@ -98,6 +118,8 @@ function drawACF(data,name,serIndex) {
                             '<button type="button" class="btn btn-primary lag active" data-xmax="100">100</button>' +
                             '<button type="button" class="btn btn-primary lag" data-xmax="1000">1000</button>' +
                             '<button type="button" class="btn btn-primary lag" data-xmax="null"">All</button>' +
+                            '<button type="button" class="btn btn-secondary ml-2" disabled>Highlight Nonzero PACF Lags:</button>' +
+                            '<button type="button" class="btn btn-outline-primary lag-hl">&#10004;</button>' +
                         '</div>' +
                     '</div>',
             //align: 'left',
@@ -113,7 +135,7 @@ function drawACF(data,name,serIndex) {
         xAxis: {
             type: 'linear',
             min: 1,
-            max: 100,
+            max: dataACFVal.length,
             minTickInterval: 1,
             title: {
                 text: 'Lag'
@@ -133,7 +155,8 @@ function drawACF(data,name,serIndex) {
                 marker: {
                     symbol: 'diamond',
                     radius: 2
-                }
+                },
+                turboThreshold: 0
             }
         },
         yAxis: {
@@ -168,6 +191,17 @@ function drawACF(data,name,serIndex) {
                                         marker: {
                                             enabled:false
                                         }
+                                    },{
+                                        data: dataACFSig,
+                                        name: 'Significant Values',
+                                        type: 'line',
+                                        color: 'red',
+                                        enableMouseTracking: false,
+                                        zIndex:2,
+                                        visible: false,
+                                        marker: {
+                                            radius: 4
+                                        }
                                     }
                                     );
 
@@ -181,11 +215,17 @@ function tableACF(data) {
     if ( $.fn.DataTable.isDataTable( tbl ) ) {
       tbl.DataTable().clear().destroy();
     }
+    
+    dataTbl = [];
+    $.each(data,function(i,row) {
+        dataTbl.push ([ row[0],row[1].toFixed(8),row[2].toFixed(8), '['+(row[1]-1.96*row[2]).toFixed(4)+ ','+(row[1]+1.96*row[2]).toFixed(4)+']' ]);
+    });
+    console.log(dataTbl);
 
     tbl
         .show()
         .DataTable({
-            data: data,
+            data: dataTbl,
             iDisplayLength: 15,
             dom:
                 "<'row'<'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
@@ -200,8 +240,9 @@ function tableACF(data) {
             },
             columns: [
                 { title: "Lag" },
-                { title: "Autocorrelation" },
-                { title: 'Standard Error' }
+                { title: "Autocorrelation", searchable: false },
+                { title: 'Standard Error', searchable: false  },
+                { title: '95% Conf. Interval', searchable: false  }
               ],
             columnDefs: [{
             }],

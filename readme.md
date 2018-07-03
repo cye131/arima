@@ -1,6 +1,15 @@
 
 
 ## ChangeLog
+### [v1.3] 2018-07-02
+- Added R integration
+- Added PACF page
+- Added PACF calculation with standard errors in PHP
+- Added PACF graphing calculation and rendering
+- Added PACF table
+- Added nonzero significance highlighting on ACF and PACF graphs
+
+
 ### [v1.2] - 2018-06-29
 - Added an auto-concatenation and minification system for JS files (/js in the root directory compiles to page-specific files in /public/static)
 - Added storage of userData into the #ser-list virtual DOM

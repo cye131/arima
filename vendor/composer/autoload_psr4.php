@@ -12,4 +12,5 @@ return array(
     'PHPTimeSeries\\' => array($vendorDir . '/php-timeseries/php-timeseries/src'),
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
     'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
+    'MathPHP\\' => array($vendorDir . '/markrogoyski/math-php/src'),
 );

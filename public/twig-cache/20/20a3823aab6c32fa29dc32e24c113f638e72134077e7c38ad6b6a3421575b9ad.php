@@ -127,7 +127,8 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
             <li class=\"nav-item\">
               <a class=\"nav-link font-weight-bold\" href=\"/graphs\">Graphs</a>
               <a class=\"nav-link pl-4\" href=\"/graphs\" >Basic Chart Comparison</a>
-              <a class=\"nav-link pl-4\" href=\"/acf\" >Autocorrelation Function</a>
+              <a class=\"nav-link pl-4\" href=\"/acf\" >Autocorrelation Function (ACF)</a>
+              <a class=\"nav-link pl-4\" href=\"/pacf\" >Partial Autocorrelation (PACF)</a>
             </li>
             <li class=\"nav-item\">
               <a class=\"nav-link\" href=\"\">Analytics</a>
@@ -141,9 +142,9 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
       
       <main class=\"col-sm-8 col-md-9 col-xl-10 ml-sm-auto pt-3 px-4\" id=\"main\">
       ";
-        // line 110
+        // line 111
         $this->displayBlock('content', $context, $blocks);
-        // line 112
+        // line 113
         echo "          <footer class=\"page-footer font-small pt-4\" style=\"background: rgba(10, 24, 66,1);\">
           
             <div class=\"container text-center text-md-left\">
@@ -227,7 +228,7 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
 
 <script>
   ";
-        // line 194
+        // line 195
         echo ($context["bodyScript"] ?? null);
         echo "
 </script>
@@ -242,10 +243,10 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
     {
     }
 
-    // line 110
+    // line 111
     public function block_content($context, array $blocks = array())
     {
-        // line 111
+        // line 112
         echo "      ";
     }
 
@@ -261,7 +262,7 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
 
     public function getDebugInfo()
     {
-        return array (  249 => 111,  246 => 110,  241 => 50,  231 => 194,  147 => 112,  145 => 110,  84 => 51,  82 => 50,  77 => 48,  34 => 8,  25 => 1,);
+        return array (  250 => 112,  247 => 111,  242 => 50,  232 => 195,  148 => 113,  146 => 111,  84 => 51,  82 => 50,  77 => 48,  34 => 8,  25 => 1,);
     }
 
     public function getSourceContext()
@@ -362,7 +363,8 @@ class __TwigTemplate_67552a73ce0761e65f5b7d5c91174c5c5f8b81ae993a8c7c3a3318eeaae
             <li class=\"nav-item\">
               <a class=\"nav-link font-weight-bold\" href=\"/graphs\">Graphs</a>
               <a class=\"nav-link pl-4\" href=\"/graphs\" >Basic Chart Comparison</a>
-              <a class=\"nav-link pl-4\" href=\"/acf\" >Autocorrelation Function</a>
+              <a class=\"nav-link pl-4\" href=\"/acf\" >Autocorrelation Function (ACF)</a>
+              <a class=\"nav-link pl-4\" href=\"/pacf\" >Partial Autocorrelation (PACF)</a>
             </li>
             <li class=\"nav-item\">
               <a class=\"nav-link\" href=\"\">Analytics</a>

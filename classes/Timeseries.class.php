@@ -1,4 +1,7 @@
 <?php
+use MathPHP\LinearAlgebra\Matrix;
+use MathPHP\LinearAlgebra\MatrixFactory;
+use MathPHP\LinearAlgebra\Vector;
 
 class Timeseries {
     
@@ -95,6 +98,64 @@ class Timeseries {
     }
     
     
+    public function pacf(int $MAX_LAG = 200) {
+
+        $y = $this->data;
+        $N = count($y);
+        $ybar = array_sum($y)/$N;
+        $ytilde = array_map(function($v) use ($ybar)  {return $v -$ybar; }, $y);
+        
+        $acf = $this->acf();
+        $acf_vals = array_column($acf,1);    
+        $acf_se = array_column($acf,2);
+        
+        
+        
+        
+        $AVec = array_slice($acf_vals,0,$N-2);
+        $BVec = array_slice($acf_vals,1,$N-1);
+        
+        if (count($AVec) > $MAX_LAG ) $AVec = array_splice($AVec,0,$MAX_LAG);
+        if (count($BVec) > $MAX_LAG ) $BVec = array_splice($BVec,0,$MAX_LAG);
+
+
+        $AMtx = $this::toeplitz($AVec);
+        $AMtx -> inverse();
+        $BMtx = new Vector($BVec);
+                
+        $AMtx -> vectorMultiply($BMtx);
+        $SolMtx = $AMtx -> vectorMultiply($BMtx);
+        $solArray = $SolMtx ->getVector();
+        $lag = (int) 1;
+        $res = [];
+        foreach ($solArray as $a) {
+            $res[$lag]['lag'] = $lag;
+            $res[$lag]['pacf'] = $a;
+            $res[$lag]['se'] = $acf_se[$lag];
+            $lag++;
+        }
+        
+        
+        
+        return json_encode($res);
+    }
+    
+    
+    
+    
+    public static function toeplitz($vector) {
+        $matrixRows = [];
+        
+        for ($i=0;$i<count($vector);$i++) {
+
+            for ($j=0;$j<count($vector);$j++) {
+                $diff = abs($j-$i);
+                $matrixRows[$i][$j] = $vector[$diff];
+            }
+        }
+        return new Matrix($matrixRows);
+        
+    }
     
     
     

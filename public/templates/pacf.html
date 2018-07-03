@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block staticlinks %}
+{% endblock %}
+
+
+{% block content %}
+
+    
+    {% set graphprepend_p %}
+            The autocorrelation function ($ACF$) at lag $l$ is given by
+            \begin{equation}  ACF(l) = \frac{\sum^{N-l}_{i=0} (x_i - \bar{x})(x_{i+l} - \bar{x})}{\sum^N_{i=0} (x_i-\bar{x})^2} \end{equation}
+            $$\text{for a time series } x_0,x_1,...,x_N $$
+            
+
+    {% endset %}
+    
+    {% include '_graphprepend_.html' with {'graphprepend_p': graphprepend_p} %}
+
+    <section class="container-fluid">
+        <div class="row justify-content-md-center my-5">
+            <div class="col-md-12" id="tsChart"></div>
+        </div>
+    </section>
+    
+    <section class="container-fluid">
+        <div class="row justify-content-md-center my-2">
+            <table class="col-md-12 w-100" id="tsTable"></table>
+        </div>
+    </section>
+    
+    <div class="overlay" hidden="hidden"></div>
+    <section class="container-fluid" id="spinnercontainer" style="" hidden="hidden">
+        <div class="row">
+            <div class="text-center col-12"><h4 style="text-align:center" id="loadmessage"></h4></div>
+        </div>
+        <div class="row">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

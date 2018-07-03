@@ -100,6 +100,7 @@ function getAJAX(model,logic,toScript,fromAjax,timeout) {
     .always(function(res) {
         $('#overlay').hide();
         console.log('AJAX Time: '+ (Date.now()-timerStart) );
+        //if (isJson(res) === false ) alert(res);
     });
 }
 

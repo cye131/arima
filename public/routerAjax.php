@@ -3,6 +3,7 @@ spl_autoload_register('myAutoloader');
 function myAutoloader($classname) {
   require_once "/var/www/arima/classes/$classname.class.php";
 }
+require_once __DIR__.'/../vendor/autoload.php';
 
 
 //Routes - AJAX

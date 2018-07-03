@@ -15,8 +15,8 @@ $twig = new Twig_Environment(
  *
  *
  */
- $DEV_MODE = ( $_SERVER['REMOTE_ADDR'] === '24.99.149.88') ? true : false;
- 
+ //$DEV_MODE = ( $_SERVER['REMOTE_ADDR'] === '24.99.149.88') ? true : false;
+ $DEV_MODE = true;
 
 /* $fromRouter sends information to model and logic files
  * $model specifies /molders folder for SQL data
@@ -60,6 +60,10 @@ $twig = new Twig_Environment(
  elseif ($request === 'acf') {
   $title = 'Autocorrelation Function';
   array_push($incJS,'acf');
+ }
+ elseif ($request === 'pacf') {
+  $title = 'Autocorrelation Function';
+  array_push($incJS,'pacf');
  }
  elseif ($request === 'boxjenkins') {
    $title = 'Box-Jenkins Analyzer';
